@@ -1,0 +1,140 @@
+body  {
+    font: 100% 細明體, 新細明體;
+    background: #666666;
+    margin: 0; /* 比較好的做法是將 Body 元素的邊界與欄位間隔調整為零，以處理不同的瀏覽器預設值 */
+    padding: 0;
+    text-align: center; /* 這樣會讓容器在 IE 5* 瀏覽器內置中對齊。然後，文字會在 #container 選取器中設定為靠左對齊預設值 */
+    color: #000000;
+}
+
+/* 彈性版面的提示
+1. 由於彈性版面的整體尺寸調整是以使用者的預設字體大小為基礎，所以比較無法預期。如果正確使用，它們也會比需要較大字體大小的版面更容易存取，這是因為行長度會維持一定比例。
+2. 這種版面的 Div 尺寸調整是以 Body 元素中的 100% 字體大小為基礎。如果您在 Body 元素或 #container 上使用 font-size: 80% 藉以減少整體文字大小，請記住，整個版面將會依比例縮小。您可能會想要增加各種 Div 的寬度來補償這種情況。
+3. 如果字體尺寸調整是以不同的量在每個 Div 而非整體設計上變更 (亦即：#sidebar1 指定為 70% 字體大小而 #mainContent 指定為 85% 字體大小)，這樣就會依比例變更每個 Div 的整體大小。您可能會想要根據最終的字體尺寸進行調整。
+*/
+.twoColElsLtHdr #container {
+    width: 46em;  /* 如果文字保持瀏覽器的預設字體大小，這個寬度將會建立可容納在 800px 瀏覽器視窗中的容器 */
+    background: #FFFFFF;
+    margin: 0 auto; /* 自動邊界 (搭配寬度) 會讓頁面置中對齊 */
+    border: 1px solid #000000;
+    text-align: center; /* 這樣做會覆寫 Body 元素上的 text-align: center。 */
+}
+.twoColElsLtHdr #header {
+    background: #DDDDDD;
+    padding: 0 10px;  /* 這個欄位間隔符合下面顯示的 Div 中，元素的靠左對齊。如果在 #header 中使用影像而非文字，您可能會想要移除欄位間隔。 */
+}
+.twoColElsLtHdr #header h1 {
+    margin: 0; /* 將 #header Div 中最後一個元素的邊界調整為零可避免邊界收合 (Div 之間出現的空間，無法解釋)。如果 Div 的周圍具有邊框，這就不是必要動作，因為該項設定也會避免邊界收合 */
+    padding: 10px 0; /* 使用欄位間隔而非邊界便可讓元素遠離 Div 的邊緣 */
+}
+
+/* sidebar1 的提示：
+1. 請注意，如果您在這個 Div 上設定 font-size 值，Div 的整體寬度將加以調整。
+2. 因為我們是以 em 為單位進行工作，所以最好不要在邊列本身上使用欄位間隔。它將會新增至寬度，而讓符合標準的瀏覽器建立不明的實際寬度。
+3. 您可以根據在 ".twoColElsLtHdr #sidebar1 p" 規則中看見的方式，將左和右邊界放置於 Div 內部的元素上，藉以建立 Div 側邊與內部元素之間的空間。
+*/
+.twoColElsLtHdr #sidebar1 {
+    float: left;
+    width: 12em; /* 因為這個元素是浮動元素，所以您必須指定寬度 */
+    background: #EBEBEB; /* 背景顏色將會針對欄的內容長度而顯示，但僅止於此 */
+    padding: 15px 0; /* 頂端和底部欄位間隔會在這個 Div 內部建立視覺空間 */
+}
+.twoColElsLtHdr #sidebar1 h3, .twoColElsLtHdr #sidebar1 p {
+    margin-left: 10px; /* 您應該針對將要放置於側邊欄的每個元素，指定左和右邊界 */
+    margin-right: 10px;
+}
+
+/* mainContent 的提示：
+1. 如果您針對這個 #mainContent Div 和 #sidebar1 Div 指定不同的 font-size 值，則 #mainContent Div 的邊界將會以其 font-size 為基礎，而 #sidebar1 Div 的寬度將會以其 font-size 為基礎。您可能會想要調整這些 Div 的值。
+2. mainContent 和 sidebar1 之間的空間是以 mainContent Div 的左邊界建立的。不論 sidebar1 Div 包含多少內容，欄空間將維持不變。當 #sidebar1 的內容結束時，如果您想讓 #mainContent Div 的文字填滿 #sidebar1 的空間，就可以移除這個左邊界。
+3. 若要避免浮動遺失，您可能需要進行測試以便判斷約略的影像/元素大小上限，因為這個版面是以使用者的字體尺寸結合您所設定的值為基礎。不過，如果使用者將他們的瀏覽器字體大小設定為低於一般大小，#mainContent Div 中的可用空間將會比您在測試時看見的空間更少。
+4. 在下列 Internet Explorer 條件註解中，縮放屬性是用來提供 mainContent "hasLayout"。這樣做可避免許多可能會發生的 IE 特有錯誤。
+*/
+.twoColElsLtHdr #mainContent {
+    /*margin: 0 1.5em 0 13em;*/ /* 右邊界的指定方式可以使用 em 或像素為單位。它會在頁面的右下方建立空間。 */
+    font-weight: bold;
+}
+.twoColElsLtHdr #footer {
+    padding: 0 10px; /* 這個欄位間隔符合上面顯示的 Div 中，元素的靠左對齊。 */
+    background:#DDDDDD;
+}
+.twoColElsLtHdr #footer p {
+    margin: 0; /* 將頁尾中第一個元素的邊界調整為零可避免邊界收合的可能性 (Div 之間出現的空間) */
+    padding: 10px 0; /* 這個元素的欄位間隔將會建立空間，就如同邊界一樣，但是沒有邊界收合的問題 */
+}
+
+/* 可重複使用的雜項類別 */
+.fltrt { /* 這個類別可用來讓頁面右邊的元素浮動。浮動元素必須位於頁面上必須相鄰的元素前面。 */
+    float: right;
+    margin-left: 8px;
+}
+.fltlft { /* 這個類別可用來讓頁面左邊的元素浮動 */
+    float: left;
+    margin-right: 8px;
+}
+.clearfloat { /* 這個類別應該放置於 Div 或 Break 元素上，而且應該是完整包含浮動的容器關閉前的最後一個元素 */
+    clear:both;
+    height:0;
+    font-size: 1px;
+    line-height: 0px;
+}
+div {
+    text-align: center;
+}
+.twoColElsLtHdr #container #sidebar1 h3 {
+    text-align: left;
+}
+.twoColElsLtHdr #container #sidebar1 h3 {
+    text-align: left;
+}
+.twoColElsLtHdr #container #sidebar1 p {
+    text-align: center;
+}
+.twoColElsLtHdr #container #mainContent fieldset table {
+    text-align: left;
+}
+.color1 {
+    color: #00F;
+}
+.twoColElsLtHdr #container #mainContent p {
+    /*text-align: left;*/
+}
+#incash {
+    color: blue;
+}
+#cash {
+    color: green;
+}
+
+.scratch {
+    background-color:  #dcdcdc;
+    width: 70%;
+    margin: 0 auto;
+}
+.scratch #item {
+    background-color: #d3d3d3;
+    /*color: purple;*/
+}
+.scratch input {
+    background-color: #dcdcdc;
+    border-style: none;
+    border-bottom: 1px solid #000000;
+}
+
+.scratch #fetched {
+    background-color: #ffc0cb;
+}
+
+.rCount_title {
+    background: url(picture/moyou2-i.gif) repeat;
+}
+.rCount_title span{
+    background-color: white;
+}
+
+<!--[if IE]>
+/* 在這個條件註解中，放置所有 IE 版本的 CSS 修正 */
+.twoColElsLtHdr #sidebar1 { padding-top: 30px; }
+.twoColElsLtHdr #mainContent { zoom: 1; padding-top: 15px; }
+/* 上面的專用縮放屬性會提供 IE 所需的 hasLayout，以避免許多錯誤 */
+<![endif]-->

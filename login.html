@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>金金金股份有限公司</title>
+	<link rel="stylesheet" href="css/uikit.min.css"/>
+	<script src="js/jquery-1.10.2.js"></script>
+	<script src="js/uikit.min.js"></script>
+</head>
+<body>
+<div class="uk-grid uk-animation-slide-top">
+	<div class="uk-width-3-10">&nbsp;</div>
+	<div class="uk-width-4-10 uk-container-center uk-margin uk-panel-box uk-border-rounded" style="background: #87cefa;">
+        <div class="uk-text-center uk-margin-top">
+            <img src="picture/logo2.png" alt="金金金"/>
+        </div>
+		<h1 class="uk-text-center uk-margin-large-top"><i class="uk-icon-home"></i>&nbsp;金金金企業網站入口</h1>
+
+		<form class="uk-form uk-text-center" action="http://playlins.synology.me/lottery/index.php" method="post">
+			<input type="hidden" name="user" value="playlins"/>
+            <input type="hidden" name="storeid" id="storeid" value="1"/>
+            <div id="p2">
+                <div class="uk-form-icon uk-margin-bottom">
+                <i class="uk-icon-lock"></i>
+                    <input id="passwd" type="password" name="passwd" class="uk-form-width-large" placeholder="輸入密碼" maxlength="18"/>
+                </div>
+                <div>
+                    <input class="uk-button uk-button-danger uk-vertical-align-middle uk-button-large uk-form-width-medium uk-align-center" type="submit" value="登入"/>
+                </div>
+            </div>
+            <div id="p1"></div>
+		</form>
+	</div>
+	<div class="uk-width-3-10">&nbsp;</div>
+</div>
+<script>
+    var store={"1":"八德總店","2":"龜山店","3":"中山店"};
+    $(document).ready(function(){
+        var t_store="";
+        for(var k in store)
+        {
+            t_store += ("<div>" +
+                    "<input class='uk-button uk-button-primary uk-form-large uk-form-width-medium uk-align-center' type='button' value="+store[k]+" onclick='goto("+k+")'/>" +
+                    "</div>");
+        }
+
+        $('#p1').html(t_store);
+    });
+    $('#p2').hide();
+	function goto(idx)
+    {
+        var form = document.forms[0];
+        switch(idx)
+        {
+            default :
+            case 1:
+                form.storeid.value = "1";
+                break;
+            case 2:
+                form.storeid.value = "2";
+                break;
+            case 3:
+                form.storeid.value = "3";
+                break;
+        }
+        $('#p1').fadeOut("fast", function(){
+            $('input[type="submit"]').val("登入 >> "+store[form.storeid.value]);
+            $('#p2').fadeIn();
+            document.getElementById('passwd').focus();
+        });
+	}
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-560770-5', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>
