@@ -36,6 +36,7 @@ $d = mysql_fetch_array($recent7);
 	<link rel="stylesheet" href="css/uikit.min.css"/>
 	<script src="js/jquery-1.10.2.js"></script>
 	<script src="js/uikit.min.js"></script>
+	<script src="js/accounting.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
 	<script>
 		var store = <?= json_encode($d)?>;
@@ -48,6 +49,10 @@ $d = mysql_fetch_array($recent7);
 		{
 			$scope.store = store2;
 			$scope.store_info = store2_info;
+			$scope.cur = function(s)
+			{
+				return accounting.formatMoney(s, '$ ', 0);
+			}
 		}
 	</script>
 </head>
@@ -57,8 +62,11 @@ $d = mysql_fetch_array($recent7);
 	<div class="uk-overflow-container" ng-app="" ng-controller="storeCtl">
 		<div class="uk-grid">
 			<div ng-repeat="d in store">
-				<div ng-repeat="d2 in store_info[d.stable]">
-					{{ d.stitle }} {{ d2.date }} | {{ d2.input1 | currency }}
+				<div>{{ d.stitle }}</div>
+				<div>
+					<div ng-repeat="d2 in store_info[d.stable]">
+						{{ d2.date }} | {{ cur(d2.input1) }}
+					</div>
 				</div>
 			</div>
 		</div>
