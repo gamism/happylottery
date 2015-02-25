@@ -1,62 +1,11 @@
 <?php include_once('common.php')?>
 
 <?php
-if(!$_SESSION['islogin']) header('location:logout.php');
+if (!$_SESSION['islogin']) header('location:logout.php');
 
-	$theYear = $_POST['getYear'];
+$theYear = $_POST['getYear'];
 
-	$theMonth = $_POST['getMonth'];
-
-	function getWeekDayName($str){
-
-		switch($str){
-
-            default:
-			case 0:
-
-				return("一");
-
-				break;
-
-			case 1:
-
-				return("二");
-
-				break;
-
-			case 2:
-
-				return("三");
-
-				break;
-
-			case 3:
-
-				return("四");
-
-				break;
-
-			case 4:
-
-				return("五");
-
-				break;
-
-			case 5:
-
-				return("六");
-
-				break;
-
-			case 6:
-
-				return("日");
-
-				break;				
-
-		}
-
-	}
+$theMonth = $_POST['getMonth'];
 
 ?>
 
@@ -68,7 +17,7 @@ if(!$_SESSION['islogin']) header('location:logout.php');
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-<title>HappyLottery系統</title>
+<title>HappyLottery系統 - <?php echo $storeName?></title>
 <script type="text/javascript" src="jquery-1.7.1.min.js"></script>
 <link rel="stylesheet" type="text/css" href="style.css" />
 <script type="text/javascript">
@@ -155,16 +104,6 @@ if(!$_SESSION['islogin']) header('location:logout.php');
 
   <?php
 
-	$con = mysql_connect($dbhost,$dbuser,$dbpass);
-
-	if (!$con){
-
-	  die('Could not connect: ' . mysql_error());
-
-	}
-
-	mysql_select_db($dbname, $con);
-
 	if($theYear!="" and $theMonth!=""){
 
 		$sql = "SELECT *, weekday(date) as theWeekDay, weekday(createTime) as theCreateDay FROM ".$stable." where year(date)=$theYear and MONTH(date)=$theMonth order by date";
@@ -183,23 +122,12 @@ if(!$_SESSION['islogin']) header('location:logout.php');
 
 	$scratchTotal = 0;
 
-	while($row = mysql_fetch_array($result))
-
-	{
-
-?>
-
-        <?php
-
-        if($row['theWeekDay'] != $row['theCreateDay'] ){
-
-            echo "<tr style='background: #bc8f8f'>";
-
-        }else{
-
-            echo "<tr>";
-
-        }
+	while($row = mysql_fetch_array($result)) {
+		if ($row['theWeekDay'] != $row['theCreateDay']) {
+			echo "<tr style='background: #bc8f8f'>";
+		} else {
+			echo "<tr>";
+		}
 
 ?>
 
@@ -271,21 +199,5 @@ if(!$_SESSION['islogin']) header('location:logout.php');
   <!-- end #footer --></div>
 
 <!-- end #container --></div>
-<!-- Piwik -->
-<script type="text/javascript">
-  var _paq = _paq || [];
-  _paq.push(['trackPageView']);
-  _paq.push(['enableLinkTracking']);
-  (function() {
-    var u=(("https:" == document.location.protocol) ? "https" : "http") + "://playlins.synology.me/piwik/";
-    _paq.push(['setTrackerUrl', u+'piwik.php']);
-    _paq.push(['setSiteId', 1]);
-    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
-    g.defer=true; g.async=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-  })();
-</script>
-<noscript><p><img src="http://playlins.synology.me/piwik/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
-<!-- End Piwik Code -->
-</body>
 
 </html>

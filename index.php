@@ -382,6 +382,7 @@ function getStock()
 		if($_SESSION['SuperAdmin'] == true)
 		{
 			echo "<p><a href='list.php'>快速查帳</a></p>";
+			echo "<p><a href='recent_report.php'>Recent7</a></p>";
 		}
 		?>
 	<p>

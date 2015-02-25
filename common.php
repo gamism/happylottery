@@ -34,6 +34,13 @@ else
 
 $sql = "select * from store where sid='".$_SESSION['storeid']."'";
 $result = mysql_query($sql) or die('MySQL query error');
+
+function query($sql)
+{
+	$result = mysql_query($sql) or die("DB cannot handle this query.");
+	return $result;
+}
+
 $store = mysql_fetch_array($result);
 
 $storeName = $store["stitle"];
@@ -48,4 +55,10 @@ else
 }
 
 date_default_timezone_set("Asia/Taipei");
+
+function getWeekDayName($str)
+{
+	$week = [0=>"一", 1=>"二", 2=>"三", 3=>"四", 4=>"五", 5=>"六", 6=>"日"];
+	return $week[$str];
+}
 ?>

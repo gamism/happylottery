@@ -25,42 +25,16 @@ while($item = mysql_fetch_array($result))
 }
 	$str = explode(",",$str1);
 
-	function getWeekDayName($str){
-		switch($str){
-			default:
-            case 0:
-				return("日");
-				break;
-			case 1:
-				return("一");
-				break;
-			case 2:
-				return("二");
-				break;
-			case 3:
-				return("三");
-				break;
-			case 4:
-				return("四");
-				break;
-			case 5:
-				return("五");
-				break;
-			case 6:
-				return("六");
-				break;
-		}
-	}
-
-	function printWeek($str){
-		$datearr = explode("-",$str);
-		$year = $datearr[0];
-		$month = $datearr[1];
-		$day = $datearr[2];
-		$dayofweek = getdate(mktime(0,0,0,$month,$day,$year));
-		$weekname = getWeekDayName($dayofweek['wday']);
-		echo "(".$weekname.")";
-	}
+function printWeek($str)
+{
+	$datearr = explode("-", $str);
+	$year = $datearr[0];
+	$month = $datearr[1];
+	$day = $datearr[2];
+	$dayofweek = getdate(mktime(0, 0, 0, $month, $day, $year));
+	$weekname = getWeekDayName($dayofweek['wday']);
+	echo "(" . $weekname . ")";
+}
 
 ?>
 
