@@ -58,7 +58,7 @@ date_default_timezone_set("Asia/Taipei");
 
 function getWeekDayName($str)
 {
-	$week = [0=>"一", 1=>"二", 2=>"三", 3=>"四", 4=>"五", 5=>"六", 6=>"日"];
+	$week = [1=>"一", 2=>"二", 3=>"三", 4=>"四", 5=>"五", 6=>"六", 0=>"日"];
 	return $week[$str];
 }
 ?>
