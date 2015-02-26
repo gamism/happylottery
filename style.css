@@ -19,6 +19,13 @@ body  {
     border: 1px solid #000000;
     text-align: center; /* 這樣做會覆寫 Body 元素上的 text-align: center。 */
 }
+.twoColElsLtHdr #container2 {
+    width: 90%;  /* 如果文字保持瀏覽器的預設字體大小，這個寬度將會建立可容納在 800px 瀏覽器視窗中的容器 */
+    background: #FFFFFF;
+    margin: 0 auto; /* 自動邊界 (搭配寬度) 會讓頁面置中對齊 */
+    border: 1px solid #000000;
+    text-align: center; /* 這樣做會覆寫 Body 元素上的 text-align: center。 */
+}
 .twoColElsLtHdr #header {
     background: #DDDDDD;
     padding: 0 10px;  /* 這個欄位間隔符合下面顯示的 Div 中，元素的靠左對齊。如果在 #header 中使用影像而非文字，您可能會想要移除欄位間隔。 */

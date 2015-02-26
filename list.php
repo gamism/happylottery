@@ -9,17 +9,14 @@ $theMonth = $_POST['getMonth'];
 
 ?>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-
-<head>
-
+<!DOCTYPE html>
+<html>
+<head lang="zh-tw">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
 <title>HappyLottery系統 - <?php echo $storeName?></title>
-<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
-<link rel="stylesheet" type="text/css" href="style.css" />
+	<script src="js/jquery-1.10.2.js"></script>
+	<link rel="stylesheet" href="css/uikit.min.css"/>
+	<link rel="stylesheet" type="text/css" href="style.css" />
 <script type="text/javascript">
     function detail(str){
         str = decodeURIComponent(str);
@@ -29,9 +26,9 @@ $theMonth = $_POST['getMonth'];
 
 </head>
 
-<body class="twoColElsLtHdr">
+<body class="uk-width-8-10 uk-container-center twoColElsLtHdr">
 
-<div id="container">
+<div id="container2">
 
   <div id="header">
 
@@ -43,11 +40,11 @@ $theMonth = $_POST['getMonth'];
 	  <script>
 		  $.get("query_ajax.php?action=weeklyReport").success(
 			  function(xhr){
-				  console.log($.parseJSON(xhr));
+//				  console.log($.parseJSON(xhr));
 			  }
 		  )
 	  </script>
-
+	  <?php genMenu();?>
       <form id="form1" name="form1" method="post" action="">
 
         <?php if($theYear!="" and $theMonth!=""){?>
@@ -67,38 +64,39 @@ $theMonth = $_POST['getMonth'];
           <input type="submit" name="button" id="button" value="登　　　　　出" />
 
       </form>
+	  <hr/>
 
 	  <table width="100%" border="1">
 
     <tr>
 
-      <td>登入日期</td>
+      <th>登入日期</th>
 
-      <td>登入星期</td>
+<!--      <td>登入星期</th>-->
 
-      <td>電腦銷售</td>
+      <th>電腦銷售</th>
 
-    <td>電腦兌獎</td>
+    <th>電腦兌獎</th>
 
-    <td>電腦刮刮樂兌獎</td>
+    <th>電腦刮刮樂兌獎</th>
 
-    <td>電腦銷售小計</td>
+<!--    <td>電腦銷售小計</th>-->
 
-    <td>刮刮樂總數</td>
+    <th>刮刮樂總數</th>
 
-    <td>刮刮樂庫存</td>
+    <th>刮刮樂庫存</th>
 
-    <td>刮刮樂銷售小計</td>
+    <th>刮刮樂銷售小計</th>
+	  
+    <th>現金</th>
 
-    <td>現金</td>
+    <th>應收現金</th>
 
-    <td>應收現金</td>
-
-    <td>銷售損益</td>
+    <th>銷售損益</th>
     
-    <td>備註</td>
+    <th>備註</th>
 
-    <td>建立時間</td>
+    <th>建立時間</th>
 
   </tr>
 
@@ -131,23 +129,23 @@ $theMonth = $_POST['getMonth'];
 
 ?>
 
-	  <td><?php echo $row['date']; ?></td>
+	  <td><?php echo $row['date'] . "(" . getWeekDayName($row['theWeekDay']) . ")"; ?></td>
 
-	  <td><?php echo getWeekDayName($row['theWeekDay']); ?></td>
+<!--	  <td>--><?php //echo getWeekDayName($row['theWeekDay']); ?><!--</td>-->
 
-	  <td style="background: #6fac34;"><?php echo $row['input1']; ?></td>
+	  <td style="background: #90ee90;"><?php echo '$ ' . number_format($row['input1']); ?></td>
 
       <td><?php echo $row['input2']; ?></td>
 
       <td><?php echo $row['input3']; ?></td>
 
-      <td><?php echo $row['pcsubtotal']; ?></td>
+<!--      <td>--><?php //echo $row['pcsubtotal']; ?><!--</td>-->
 
       <td><?php echo $row['input4']; ?></td>
 
       <td><?php echo $row['input5']; ?></td>
 
-      <td style="background: #2d7091;"><?php echo (($row['input4']-$row['input5'])*100); ?></td>
+      <td style="background: lightblue;"><?php echo '$ ' . number_format(($row['input4']-$row['input5'])*100); ?></td>
 
       <td><?php echo $row['input6']; ?></td>
 

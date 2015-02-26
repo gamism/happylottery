@@ -375,17 +375,10 @@ function getStock()
 
     <p>Donec eu mi sed turpis feugiat feugiat. Integer turpis arcu, pellentesque  eget, cursus et, fermentum ut, sapien. </p>
 
-    <?php }else{?>
+    <?php }else{ ?>
 
-        <script type="text/javascript">menu();</script>
-		<?php
-		if($_SESSION['SuperAdmin'] == true)
-		{
-			echo "<p><a href='list.php'>快速查帳</a></p>";
-			echo "<p><a href='recent_report.php'>Recent7</a></p>";
-		}
-		?>
-	<p>
+	  <script type="text/javascript">menu();</script>
+	  <?php genMenu(); ?>
 
   <?php } ?>
 

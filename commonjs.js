@@ -16,7 +16,7 @@ function menu(){
     dw('<p>管理員你好阿！</p>');
     dw('<p><input type="submit" name="button" id="button" value="登　　　　　出" /></p>');
     document.write('</form>');
-    document.write('<p><a href="index.php">輸入日報表</a>	</p>');
+    //document.write('<p><a href="index.php">輸入日報表</a></p>');
 //    document.write('<p><a href="scratchTicket.php">刮刮樂管理</a></p>');
 //    document.write('<p><a href="profit.php">損益表</a></p>');
 //    document.write('<p><a href="rCount.php">金庫管理</a></p>');

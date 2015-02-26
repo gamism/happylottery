@@ -61,4 +61,14 @@ function getWeekDayName($str)
 	$week = [1=>"一", 2=>"二", 3=>"三", 4=>"四", 5=>"五", 6=>"六", 0=>"日"];
 	return $week[$str];
 }
+
+function genMenu()
+{
+	echo "<p><a href='index.php'>輸入日報表</a></p>";
+	if($_SESSION['SuperAdmin'] == true)
+	{
+		echo "<p><a href='list.php'>快速查帳</a></p>";
+		echo "<p><a href='recent_report.php'>Recent7</a></p>";
+	}
+}
 ?>
