@@ -8,31 +8,35 @@
 	<script src="js/uikit.min.js"></script>
 </head>
 <body>
-<div class="uk-grid uk-animation-slide-top">
-	<div class="uk-width-3-10">&nbsp;</div>
-	<div class="uk-width-4-10 uk-container-center uk-margin uk-panel-box uk-border-rounded" style="background: #87cefa;">
-        <div class="uk-text-center uk-margin-top">
-            <img src="picture/logo2.png" alt="金金金"/>
-        </div>
-		<h1 class="uk-text-center uk-margin-large-top"><i class="uk-icon-home"></i>&nbsp;金金金企業網站入口</h1>
 
-		<form class="uk-form uk-text-center" action="http://playlins.synology.me/lottery/index.php" method="post">
-			<input type="hidden" name="user" value="playlins"/>
-            <input type="hidden" name="storeid" id="storeid" value="1"/>
-            <div id="p2">
-                <div class="uk-form-icon uk-margin-bottom">
-                <i class="uk-icon-lock"></i>
-                    <input id="passwd" type="password" name="passwd" class="uk-form-width-large" placeholder="輸入密碼" maxlength="18"/>
-                </div>
-                <div>
-                    <input class="uk-button uk-button-danger uk-vertical-align-middle uk-button-large uk-form-width-medium uk-align-center" type="submit" value="登入"/>
-                </div>
-            </div>
-            <div id="p1"></div>
-		</form>
-	</div>
-	<div class="uk-width-3-10">&nbsp;</div>
-</div>
+			<div class="uk-animation-slide-top uk-width-2-5 uk-container-center uk-margin-large-top">
+				<div class="uk-grid uk-margin uk-panel-box uk-border-rounded" style="background: #87cefa;">
+					<div class="uk-width-1-1">
+						<div class="uk-text-center uk-margin-top">
+							<img src="picture/logo2.png" alt="金金金"/>
+						</div>
+						<h1 class="uk-text-center uk-margin-large-top"><i class="uk-icon-home"></i>&nbsp;金金金企業網站入口</h1>
+
+									<form class="uk-form uk-text-center" action="http://playlins.synology.me/lottery/index.php" method="post">
+										<input type="hidden" name="user" value="playlins"/>
+										<input type="hidden" name="storeid" id="storeid" value="1"/>
+										<div id="p2">
+											<div class="uk-form-icon uk-margin-bottom">
+												<i class="uk-icon-lock"></i>
+												<input id="passwd" type="password" name="passwd" class="uk-form-width-large uk-form-large uk-form-danger" placeholder="輸入密碼" maxlength="18"/>
+											</div>
+											<div>
+												<input class="uk-button uk-button-danger uk-vertical-align-middle uk-button-large uk-form-width-medium uk-align-center" type="submit" value="登入"/>
+											</div>
+										</div>
+										<div id="p1"></div>
+									</form>
+						<p class="uk-margin-large-top uk-text-bold uk-text-center">Copyright © Happy Lottery</p>
+					</div>
+				</div>
+			</div>
+
+
 <script>
     var store={"1":"八德總店","2":"龜山店","3":"中山店"};
     $(document).ready(function(){
