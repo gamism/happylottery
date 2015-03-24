@@ -22,6 +22,11 @@ $theMonth = $_POST['getMonth'];
         str = decodeURIComponent(str);
         alert(str);
     }
+	function weekDay(date)
+	{
+		var week=['日','一','二','三','四','五','六'];
+		document.write(week[new Date(date).getDay()]);
+	}
 </script>
 
 </head>
@@ -74,7 +79,7 @@ $theMonth = $_POST['getMonth'];
 
 <!--      <td>登入星期</th>-->
 
-      <th>電腦銷售</th>
+      <th nowrap>電腦銷售</th>
 
     <th>電腦兌獎</th>
 
@@ -129,11 +134,11 @@ $theMonth = $_POST['getMonth'];
 
 ?>
 
-	  <td><?php echo $row['date'] . "(" . getWeekDayName($row['theWeekDay']) . ")"; ?></td>
+	  <td><?=$row['date']?> (<script>weekDay('<?=$row['date']?>');</script>)</td>
 
 <!--	  <td>--><?php //echo getWeekDayName($row['theWeekDay']); ?><!--</td>-->
 
-	  <td style="background: #90ee90;"><?php echo '$ ' . number_format($row['input1']); ?></td>
+	  <td nowrap style="background: #90ee90;"><?php echo '$ ' . number_format($row['input1']); ?></td>
 
       <td><?php echo $row['input2']; ?></td>
 
